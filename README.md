@@ -6,4 +6,5 @@
  - 최동준
  - 박성환
    - hp 010-1234-1234
+   - vscode에서 git commit, push 연습하기
  - 최병준
