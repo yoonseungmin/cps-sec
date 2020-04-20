@@ -1,34 +1,31 @@
 import requests
 from bs4 import BeautifulSoup
 
-req = requests.get("https://movie.naver.com/movie/running/current.nhn#")
+req = requests.get("https://sports.news.naver.com/kbaseball/news/index.nhn?isphoto=N")
 if req.status_code != 200 :
     print("failed", req.status_code)
 
 html = req.text
 bs = BeautifulSoup(html, "html.parser")
 
-box = bs.find_all("dl", class_="lst_dsc")
+box = bs.find_all("div", class_="text")
 
-title = []
-ratio = []
-book = []
+newstitle = []
+press = []
+time = []
 
 for b in box:
-    title.append(b.find("dt", class_="tit").find("a").text)
-    ratio.append(b.find("div", class_="star_t1").find("span", class_="num").text)
-    if b.find("dl", class_="info_exp") != None : 
-        book.append(b.find("dl", class_="info_exp").find("span", class_="num").text)
-    else : 
-        book.append("0")
+    newstitle.append(b.find("span").text)
+    press.append(b.find("div", class_="source").find("span", class_="press").text)
+    time.append(b.find("div", class_="source").find(text).text)
 
-movieInfo = []
+newsInfo = []
 for i in range(len(box)) :
-    movie = []
-    movie.append(title[i])
-    movie.append(ratio[i])
-    movie.append(book[i])
-    movieInfo.append(movie)
+    news = []
+    news.append(newstitle[i])
+    news.append(press[i])
+    news.append(time[i])
+    newsInfo.append(news)
 
-for i in movieInfo :
+for i in newsInfo :
     print(i)
