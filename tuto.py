@@ -21,7 +21,7 @@ shopInfo = []
 for i in range(len(box)) :
     shop = []
     shop.append(name[i])
-    #shop.append(price[i])
+    #shop.append(price[i]) 오류 주석처리
     shopInfo.append(shop)
 
 for i in shopInfo :
