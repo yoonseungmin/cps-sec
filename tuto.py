@@ -1,31 +1,28 @@
 import requests
 from bs4 import BeautifulSoup
 
-req = requests.get("https://sports.news.naver.com/kbaseball/news/index.nhn?isphoto=N")
-if req.status_code != 200 :
+req = requests.get("http://www.personal-pack.com/shop/shopbrand.html?xcode=014&type=O")
+if req.status_code !=200 :
     print("failed", req.status_code)
 
 html = req.text
+
 bs = BeautifulSoup(html, "html.parser")
+box = bs.find_all("table", class_="product_table")
 
-box = bs.find_all("div", class_="text")
+name = []
+price = []
 
-newstitle = []
-press = []
-time = []
+for b in box : 
+    name.append(b.find("font", class_="brandbrandname").text)
+    #price.append(b.find("td", class_="bandprice_tr").find("span", class_="brandprice").find("span", class_="mk_price").text)
 
-for b in box:
-    newstitle.append(b.find("span").text)
-    press.append(b.find("div", class_="source").find("span", class_="press").text)
-    time.append(b.find("div", class_="source").find(text).text)
-
-newsInfo = []
+shopInfo = []
 for i in range(len(box)) :
-    news = []
-    news.append(newstitle[i])
-    news.append(press[i])
-    news.append(time[i])
-    newsInfo.append(news)
+    shop = []
+    shop.append(name[i])
+    #shop.append(price[i])
+    shopInfo.append(shop)
 
-for i in newsInfo :
+for i in shopInfo :
     print(i)
