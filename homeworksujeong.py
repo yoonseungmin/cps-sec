@@ -15,13 +15,13 @@ price = []
 
 for b in box : 
     name.append(b.find("font", class_="brandbrandname").text)
-    #price.append(b.find("td", class_="bandprice_tr").find("span", class_="brandprice").find("span", class_="mk_price").text)
+    price.append(b.find("td", class_="bandprice_tr")b.find("span", class_="brandprice")b.find("span", class_="mk_price").text)
 
 shopInfo = []
 for i in range(len(box)) :
     shop = []
     shop.append(name[i])
-    #shop.append(price[i]) 오류 주석처리:(
+    shop.append(price[i])
     shopInfo.append(shop)
 
 for i in shopInfo :
